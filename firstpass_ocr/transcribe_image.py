@@ -15,9 +15,7 @@ import glob
 import os.path
 import json
 from collections import defaultdict
-import Levenshtein
 from google.cloud import vision
-import editdistance as ed
 from google.protobuf.json_format import MessageToJson
 
 
@@ -28,7 +26,7 @@ class OCR:
     def detect_text(self, image_path):
         with io.open(image_path, "rb") as image_file:
             content = image_file.read()
-        image = vision.types.Image(content=content)
+        image = vision.Image(content=content)
         response = self.client.document_text_detection(image=image)
         return response
 
@@ -86,12 +84,12 @@ def write_outputs(image_paths, ocr_responses, output_folder, json_out):
     for img, ocr in zip(image_paths, ocr_responses):
         filename, _ = os.path.splitext(img.split("/")[-1])
         if json_out:
-            with open("".join([output_folder, filename, ".json"]), "w") as out:
+            with open("".join([output_folder, "/", filename, ".json"]), "w") as out:
                 json.dump(
                     ocr, out, separators=(",", ": "), ensure_ascii=False, indent=4
                 )
         else:
-            with open("".join([output_folder, filename, ".txt"]), "w") as out:
+            with open("".join([output_folder, "/", filename, ".txt"]), "w") as out:
                 out.write(ocr)
 
 

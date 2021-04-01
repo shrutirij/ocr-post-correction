@@ -35,3 +35,7 @@ if __name__ == "__main__":
     for i, page in enumerate(images):
         print(i)
         page.save("{}/{}.png".format(args.output_folder, i), "PNG")
+
+    temp_files = glob.glob("{}/*.ppm".format(args.output_folder))
+    for f in temp_files:
+        os.remove(f)
