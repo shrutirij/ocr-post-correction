@@ -131,5 +131,4 @@ dmypy.json
 .DS_Store
 
 my_expt*
-sample_data*
 creds*
