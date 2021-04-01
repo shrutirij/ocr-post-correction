@@ -40,9 +40,9 @@ We provide scripts for both single-source and multisource models:
 
 - The **multisource** model can only be used if translations are available.
 
-:rocket: If you are using the sample dataset or already have OCR post-correction training data, follow [these steps](docs/postcorrection.md) to run training and evaluation on the model.
+:rocket: If you are using the sample dataset or already have OCR post-correction training data, follow [these steps](postcorrection.md) to run training and evaluation on the model.
 
-:rocket: If you are starting with scanned images or a scanned PDF, follow [the steps here](docs/firstpass.md) to get a *first pass OCR* and create the post-correction dataset.
+:rocket: If you are starting with scanned images or a scanned PDF, follow [the steps here](firstpass.md) to get a *first pass OCR* and create the post-correction dataset.
 
 We'd love to hear about the new datasets and models you build: send us an email at [srijhwan@cs.cmu.edu](mailto:srijhwan@cs.cmu.edu)!
 
