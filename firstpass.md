@@ -81,20 +81,30 @@ python firstpass_ocr/transcribe_image.py  \
 Once we obtain a first pass OCR for all the pages in our document, the next step is constructing a dataset to train the OCR post-correction model. The model is trained in a **supervised manner**. Since the model is designed for a low-resource setting, a small number of manually annotated pages (~10 pages) is typically sufficient to train a model (although, more is better).
 
 Each instance in the training dataset has a source (the first pass OCR of the endangered language text) and target (the corrected "gold" transcription). For the multisource setting, we have an additional source (the first pass OCR of the translation). These are denoted by:
-:pushpin: `src1` for the first pass OCR of the endangered language text
-:pushpin: `src2` for the first pass OCR of the translation
-:pushpin: `tgt` the corrected "gold" transcription
+
+* `src1` for the first pass OCR of the endangered language text
+
+* `src2` for the first pass OCR of the translation
+
+* `tgt` the corrected "gold" transcription
 
 The steps for creating the dataset are:
 
-* Select the subset of pages that will be manually corrected and used for training. The remaining uncorrected pages will be used for pretraining the model. 
-* Divide the first pass OCR outputs of `src1` (and `src2` for multisource) as `corrected` and `uncorrected` based on the pages selected for manual annotation: see `sample_dataset/text_outputs` for an example.
-* Manually transcribe the pages and add the transcriptions `corrected/tgt`. Ensure that the first pass OCR outputs and the manual transcriptions are aligned at **sentence-level** or **paragraph-level**. The text files should contain one sentence/paragraph per line: see `sample_dataset/text_outputs/corrected`. Annotation tools like [From The Page](https://fromthepage.com) can make this process easier.
-* If `src2` exists, also align the first pass OCR of `src2` at the sentence/paragraph-level with respect to `src1`. Note that `src2` **does not need** to be manually corrected, only aligned.
-* For the `uncorrected` first pass OCR, for a single-source model, simply split the text at the sentence-level to have one sentence per line. For multisource, use a sentence aligner like [YASA](https://github.com/anoidgit/yasa) to automatically align the text.
-* After alignment and annotation, all files corresponding to the same page (`src1`, `src2`, `tgt`) should have the same number of lines.
-* See `sample_dataset/text_outputs` for an example of aligned and annotated text created after all the steps above.
-* Finally, run the `prepare_data` script to format the data as pretraining, training, development, and test sets. Exclude the `src2` parameters for a single-source dataset. These will be used to train models and run experiments.
+:pushpin: Select the subset of pages that will be manually corrected and used for training. The remaining uncorrected pages will be used for pretraining the model. 
+
+:pushpin: Divide the first pass OCR outputs of `src1` (and `src2` for multisource) as `corrected` and `uncorrected` based on the pages selected for manual annotation: see `sample_dataset/text_outputs` for an example.
+
+:pushpin: Manually transcribe the pages and add the transcriptions `corrected/tgt`. Ensure that the first pass OCR outputs and the manual transcriptions are aligned at **sentence-level** or **paragraph-level**. The text files should contain one sentence/paragraph per line: see `sample_dataset/text_outputs/corrected`. Annotation tools like [From The Page](https://fromthepage.com) can make this process easier.
+
+:pushpin: If `src2` exists, also align the first pass OCR of `src2` at the sentence/paragraph-level with respect to `src1`. Note that `src2` **does not need** to be manually corrected, only aligned.
+
+:pushpin: For the `uncorrected` first pass OCR, for a single-source model, simply split the text at the sentence-level to have one sentence per line. For multisource, use a sentence aligner like [YASA](https://github.com/anoidgit/yasa) to automatically align the text.
+
+:pushpin: After alignment and annotation, all files corresponding to the same page (`src1`, `src2`, `tgt`) should have the same number of lines.
+
+:pushpin: See `sample_dataset/text_outputs` for an example of aligned and annotated text created after all the steps above.
+
+:pushpin: Finally, run the `prepare_data` script to format the data as pretraining, training, development, and test sets. Exclude the `src2` parameters for a single-source dataset. These will be used to train models and run experiments.
 
 ```
 python utils/prepare_data.py  \
