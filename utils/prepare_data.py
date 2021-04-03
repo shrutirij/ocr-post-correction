@@ -24,9 +24,9 @@ def prepare_pretraining_data(src1, src2, output_folder):
     src1_all_lines = []
     src2_all_lines = []
 
-    src1_paths = sorted(glob.glob(src1))
+    src1_paths = sorted(glob.glob(src1 + "/*"))
     if src2:
-        src2_paths = sorted(glob.glob(src2))
+        src2_paths = sorted(glob.glob(src2 + "/*"))
     else:
         src2_paths = src1_paths
 
@@ -55,12 +55,12 @@ def prepare_pretraining_data(src1, src2, output_folder):
             src1_all_lines.append(src1_line)
             src2_all_lines.append(src2_line)
 
-    open("{}/pretrain_src1.txt".format(output_folder)).write(
-        "\n".join(src1_all_lines) + "\n"
+    open("{}/pretrain_src1.txt".format(output_folder), "w", encoding="utf8").write(
+        "".join(src1_all_lines)
     )
     if src2:
-        open("{}/pretrain_src2.txt".format(output_folder)).write(
-            "\n".join(src2_all_lines) + "\n"
+        open("{}/pretrain_src2.txt".format(output_folder), "w", encoding="utf8").write(
+            "".join(src2_all_lines)
         )
 
 
@@ -104,10 +104,16 @@ def write_training_data(filenames, output_name, check):
             src2_all_lines.append(src2_line)
             tgt_all_lines.append(tgt_line)
 
-    open("{}src1.txt".format(output_name)).write("\n".join(src1_all_lines) + "\n")
+    open("{}src1.txt".format(output_name), "w", encoding="utf8").write(
+        "".join(src1_all_lines)
+    )
     if check:
-        open("{}src2.txt".format(output_name)).write("\n".join(src2_all_lines) + "\n")
-    open("{}tgt.txt".format(output_name)).write("\n".join(tgt_all_lines) + "\n")
+        open("{}src2.txt".format(output_name), "w", encoding="utf8").write(
+            "".join(src2_all_lines)
+        )
+    open("{}tgt.txt".format(output_name), "w", encoding="utf8").write(
+        "".join(tgt_all_lines)
+    )
 
 
 def prepare_training_data(src1, src2, tgt, output_folder, training_frac):
@@ -116,14 +122,14 @@ def prepare_training_data(src1, src2, tgt, output_folder, training_frac):
     if not os.path.exists(output_folder):
         os.makedirs(output_folder)
 
-    src1_paths = sorted(glob.glob(src1))
+    src1_paths = sorted(glob.glob(src1 + "/*"))
     if src2:
         check = True
-        src2_paths = sorted(glob.glob(src2))
+        src2_paths = sorted(glob.glob(src2 + "/*"))
     else:
         check = False
         src2_paths = src1_paths
-    tgt_paths = sorted(glob.glob(tgt))
+    tgt_paths = sorted(glob.glob(tgt + "/*"))
 
     assert len(src1_paths) == len(src2_paths) == len(tgt_paths)
 
@@ -133,9 +139,11 @@ def prepare_training_data(src1, src2, tgt, output_folder, training_frac):
     train_idx = int(training_frac * len(all_files))
     dev_idx = train_idx + int((1.0 - training_frac) * len(all_files) / 2)
 
-    write_training_data(all_files[:train_idx], "{}/train_", check)
-    write_training_data(all_files[train_idx:dev_idx], "{}/dev_", check)
-    write_training_data(all_files[dev_idx:], "{}/test_", check)
+    write_training_data(all_files[:train_idx], "{}/train_".format(output_folder), check)
+    write_training_data(
+        all_files[train_idx:dev_idx], "{}/dev_".format(output_folder), check
+    )
+    write_training_data(all_files[dev_idx:], "{}/test_".format(output_folder), check)
 
 
 if __name__ == "__main__":
