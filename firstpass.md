@@ -108,11 +108,11 @@ The steps for creating the dataset are:
 
 ```
 python utils/prepare_data.py  \
---unannotated_src1 sample_dataset/text_outputs/uncorrected/src1/  \
---unannotated_src2 sample_dataset/text_outputs/uncorrected/src2/  \
---annotated_src1 sample_dataset/text_outputs/corrected/src1/  \
---annotated_src2 sample_dataset/text_outputs/corrected/src2/  \
---annotated_tgt sample_dataset/text_outputs/corrected/tgt/  \
+--unannotated_src1 sample_dataset/text_outputs/uncorrected/src1_griko/  \
+--unannotated_src2 sample_dataset/text_outputs/uncorrected/src2_italian/  \
+--annotated_src1 sample_dataset/text_outputs/corrected/src1_griko/  \
+--annotated_src2 sample_dataset/text_outputs/corrected/src2_italian/  \
+--annotated_tgt sample_dataset/text_outputs/corrected/tgt_griko/  \
 --output_folder sample_dataset/postcorrection
 ```
 
