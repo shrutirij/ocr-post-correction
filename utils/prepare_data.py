@@ -136,8 +136,12 @@ def prepare_training_data(src1, src2, tgt, output_folder, training_frac):
     all_files = list(zip(src1_paths, src2_paths, tgt_paths))
     random.shuffle(all_files)
 
-    train_idx = int(training_frac * len(all_files))
-    dev_idx = train_idx + int((1.0 - training_frac) * len(all_files) / 2)
+    train_idx = round(training_frac * len(all_files))
+    dev_idx = train_idx + round((1.0 - training_frac) * len(all_files)/2)
+
+    if dev_idx <= train_idx or dev_idx == len(all_files):
+        logging.error("ERROR: Fractions for data split are not usable with the dataset size. Adjust the parameter and try again. ")
+        return
 
     write_training_data(all_files[:train_idx], "{}/train_".format(output_folder), check)
     write_training_data(

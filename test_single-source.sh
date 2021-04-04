@@ -1,7 +1,7 @@
 # --------------------- REQUIRED: Modify for each dataset and/or experiment ---------------------
 
 # Set test source file (test_tgt is optional, can be used to compute CER and WER of the predicted output)
-test_src="sample_data/testing/test_src1.txt"
+test_src="sample_dataset/postcorrection/training/test_src1.txt"
 
 # Set experiment parameters
 expt_folder="my_expt_singlesource/"

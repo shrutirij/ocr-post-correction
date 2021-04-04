@@ -1,21 +1,21 @@
 # --------------------- REQUIRED: Modify for each dataset and/or experiment ---------------------
 
 # Set pretraining, training and development set files
-pretrain_src1="sample_data/pretraining/pretrain_src1.txt"
-pretrain_src2="sample_data/pretraining/pretrain_src2.txt"
+pretrain_src1="sample_dataset/postcorrection/pretraining/pretrain_src1.txt"
+pretrain_src2="sample_dataset/postcorrection/pretraining/pretrain_src2.txt"
 
-train_src1="sample_data/training/train_src1.txt"
-train_src2="sample_data/training/train_src2.txt"
-train_tgt="sample_data/training/train_tgt.txt"
+train_src1="sample_dataset/postcorrection/training/train_src1.txt"
+train_src2="sample_dataset/postcorrection/training/train_src2.txt"
+train_tgt="sample_dataset/postcorrection/training/train_tgt.txt"
 
-dev_src1="sample_data/training/dev_src1.txt"
-dev_src2="sample_data/training/dev_src2.txt"
-dev_tgt="sample_data/training/dev_tgt.txt"
+dev_src1="sample_dataset/postcorrection/training/dev_src1.txt"
+dev_src2="sample_dataset/postcorrection/training/dev_src2.txt"
+dev_tgt="sample_dataset/postcorrection/training/dev_tgt.txt"
 
 # Set experiment parameters
 expt_folder="my_expt_multisource/"
 
-dynet_mem=1000 # Memory in MB available for training
+dynet_mem=3000 # Memory in MB available for training
 
 params="--pretrain_dec --pretrain_s2s --pretrain_enc --pointer_gen --coverage --diag_loss 2"
 pretrained_model_name="my_pretrained_model"
@@ -52,6 +52,7 @@ python postcorrection/create_vocab.py \
 --tgt_files $train_tgt $dev_tgt \
 --output_folder $expt_folder/vocab
 
+echo "Begin pretraining"
 
 # Pretrain the model (add --dynet-gpu for using GPU)
 python postcorrection/multisource_wrapper.py \
@@ -66,6 +67,7 @@ $params \
 --model_name $pretrained_model_name \
 --pretrain_only
 
+echo "Begin training"
 
 # Load the pretrained model and train the model using manually annotated training data (add --dynet-gpu for using GPU)
 python postcorrection/multisource_wrapper.py \

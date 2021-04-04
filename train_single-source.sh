@@ -1,13 +1,13 @@
 # --------------------- REQUIRED: Modify for each dataset and/or experiment ---------------------
 
 # Set pretraining, training and development set files
-pretrain_src="sample_data/pretraining/pretrain_src1.txt"
+pretrain_src="sample_dataset/postcorrection/pretraining/pretrain_src1.txt"
 
-train_src="sample_data/training/train_src1.txt"
-train_tgt="sample_data/training/train_tgt.txt"
+train_src="sample_dataset/postcorrection/training/train_src1.txt"
+train_tgt="sample_dataset/postcorrection/training/train_tgt.txt"
 
-dev_src="sample_data/training/dev_src1.txt"
-dev_tgt="sample_data/training/dev_tgt.txt"
+dev_src="sample_dataset/postcorrection/training/dev_src1.txt"
+dev_tgt="sample_dataset/postcorrection/training/dev_tgt.txt"
 
 # Set experiment parameters
 expt_folder="my_expt_singlesource/"
