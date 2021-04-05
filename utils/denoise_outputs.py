@@ -8,13 +8,13 @@ The denoised outputs are subsequently used to pretrain the post-correction model
 Usage:
 python denoise_outputs.py --train_src1 [train_src] --train_tgt [train_tgt] --input [input_filename] --output [output_filename]
 
-Author: Shruti Rijhwani
-Contact: srijhwan@cs.cmu.edu
+Copyright (c) 2021, Shruti Rijhwani
+All rights reserved.
 
-Please cite:
-OCR Post Correction for Endangered Language Texts (EMNLP 2020)
-https://www.aclweb.org/anthology/2020.emnlp-main.478/
+This source code is licensed under the BSD-style license found in the
+LICENSE file in the root directory of this source tree. 
 """
+
 
 import argparse
 import glob

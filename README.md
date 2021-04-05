@@ -113,5 +113,6 @@ Please cite our paper if this repository was useful.
 }
 ```
 
-
-
+## License
+* [Software License](./LICENSE)
+* [Dataset License](sample_dataset/LICENSE)

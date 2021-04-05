@@ -6,13 +6,13 @@ This file includes:
 (3) Class DataReader for preparing the data to be used for training and evaluation;
 (4) Class Hypothesis for the hypotheses used in beam search.
 
-Author: Shruti Rijhwani
-Contact: srijhwan@cs.cmu.edu
+Copyright (c) 2021, Shruti Rijhwani
+All rights reserved.
 
-Please cite:
-OCR Post Correction for Endangered Language Texts (EMNLP 2020)
-https://www.aclweb.org/anthology/2020.emnlp-main.478/
+This source code is licensed under the BSD-style license found in the
+LICENSE file in the root directory of this source tree. 
 """
+
 
 import argparse
 from collections import defaultdict

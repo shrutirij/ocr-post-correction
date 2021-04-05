@@ -6,13 +6,13 @@ For training data, the script splits the manually corrected files into training,
 The fraction of training data is controlled with the --training_frac option.
 The remaining data is equally split between development and testing sets.
 
-Author: Shruti Rijhwani
-Contact: srijhwan@cs.cmu.edu
+Copyright (c) 2021, Shruti Rijhwani
+All rights reserved.
 
-Please cite:
-OCR Post Correction for Endangered Language Texts (EMNLP 2020)
-https://www.aclweb.org/anthology/2020.emnlp-main.478/
+This source code is licensed under the BSD-style license found in the
+LICENSE file in the root directory of this source tree. 
 """
+
 
 import argparse
 import os

@@ -2,13 +2,13 @@
 
 These can be modified for different languages/settings as needed.
 
-Author: Shruti Rijhwani
-Contact: srijhwan@cs.cmu.edu
+Copyright (c) 2021, Shruti Rijhwani
+All rights reserved.
 
-Please cite:
-OCR Post Correction for Endangered Language Texts (EMNLP 2020)
-https://www.aclweb.org/anthology/2020.emnlp-main.478/
+This source code is licensed under the BSD-style license found in the
+LICENSE file in the root directory of this source tree. 
 """
+
 
 LSTM_NUM_OF_LAYERS = 1
 EMBEDDING_DIM = 128

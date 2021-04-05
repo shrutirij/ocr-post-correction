@@ -3,13 +3,13 @@
 This class contains functions to parse the input options set by the user.
 It also contains logging, outputs, and model saving information.
 
-Author: Shruti Rijhwani
-Contact: srijhwan@cs.cmu.edu
+Copyright (c) 2021, Shruti Rijhwani
+All rights reserved.
 
-Please cite:
-OCR Post Correction for Endangered Language Texts (EMNLP 2020)
-https://www.aclweb.org/anthology/2020.emnlp-main.478/
+This source code is licensed under the BSD-style license found in the
+LICENSE file in the root directory of this source tree. 
 """
+
 
 import argparse
 import logging

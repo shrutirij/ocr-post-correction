@@ -1,0 +1,19 @@
+This sample dataset is released as part of the paper:
+OCR Post Correction for Endangered Language Texts (EMNLP 2020)
+https://www.aclweb.org/anthology/2020.emnlp-main.478/
+
+The dataset contains a scanned document in PDF format released with permission from the original publisher. 
+It also contains manual annotations for the OCR post-correction task.
+
+By accessing the dataset, you agree to the terms and conditions specified below.
+
+---------------------------
+TERMS AND CONDITIONS
+---------------------------
+* The dataset is available exclusively for academic or personal research and 
+  cannot be used for any other purpose.
+
+* The dataset cannot be distributed without permission.
+
+* The dataset cannot be used in a commercial environment.
+---------------------------
