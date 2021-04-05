@@ -66,10 +66,6 @@ The steps to use the API are:
     - In the next step, enter any service name you want and choose "Project --> Owner" as the role.
     - A JSON file will be generated with your credentials.
 
-The first 1000 images processed *per month* with Google Cloud are free. The platform also offers a $300 credit to new users.
-
-If you are unable to sign up for Google Cloud, please email us at srijhwan@cs.cmu.edu and we might be able to help!
-
 Given your credentials json file, run the following commands to get the first pass OCR:
 
 ```
@@ -80,17 +76,23 @@ python firstpass_ocr/transcribe_image.py  \
 --output_folder sample_dataset/images/ocr_output
 ```
 
+The first 1000 images processed *per month* with Google Cloud are free. The platform also offers a $300 credit to new users.
+
+**If you are unable to sign up for Google Cloud, please email us at srijhwan@cs.cmu.edu and we might be able to help!**
+
 ## Constructing a Post-Correction Dataset
 
-Once we obtain a first pass OCR for all the pages in our document, the next step is constructing a dataset to train the OCR post-correction model. The model is trained in a **supervised manner**. Since the model is designed for a low-resource setting, a small number of manually annotated pages (~10 pages) is typically sufficient to train a model (although, more is better).
+Once we obtain a first pass OCR for all the pages in our document, the next step is constructing a dataset to train the OCR post-correction model. The model is trained in a **supervised manner**. 
+
+Since the model is designed for a low-resource setting, a small number of manually annotated pages (~10 pages) is typically sufficient to train a model (although more is better).
 
 Each instance in the training dataset has a source (the first pass OCR of the endangered language text) and target (the corrected "gold" transcription). For the multisource setting, we have an additional source (the first pass OCR of the translation). These are denoted by:
 
-* `src1` for the first pass OCR of the endangered language text
+:pushpin: `src1` for the first pass OCR of the endangered language text
 
-* `src2` for the first pass OCR of the translation
+:pushpin: `src2` for the first pass OCR of the translation
 
-* `tgt` the corrected "gold" transcription
+:pushpin: `tgt` the corrected "gold" transcription
 
 The steps for creating the dataset are:
 
@@ -100,9 +102,9 @@ The steps for creating the dataset are:
 
 * Manually transcribe the pages and add the transcriptions `corrected/tgt`. Ensure that the first pass OCR outputs and the manual transcriptions are aligned at **sentence-level** or **paragraph-level**. The text files should contain one sentence/paragraph per line: see `sample_dataset/text_outputs/corrected`. Annotation tools like [From The Page](https://fromthepage.com) can make this process easier.
 
-* If `src2` exists, also align the first pass OCR of `src2` at the sentence/paragraph-level with respect to `src1`. Note that `src2` **does not need** to be manually corrected, only aligned.
+* If `src2` exists, also align the first pass OCR of `src2` at the sentence or paragraph-level with respect to `src1`. Note that `src2` **does not need to be manually corrected**, only aligned.
 
-* For the `uncorrected` first pass OCR, for a single-source model, simply split the text at the sentence-level to have one sentence per line. For multisource, use a sentence aligner like [YASA](https://github.com/anoidgit/yasa) to automatically align the text.
+* For the `uncorrected` first pass OCR, for a single-source model, simply split the text at the sentence-level to have one sentence per line. For multisource, use a sentence aligner like [YASA](https://github.com/anoidgit/yasa) to automatically align the sentences.
 
 * After alignment and annotation, all files corresponding to the same page (`src1`, `src2`, `tgt`) should have the same number of lines.
 
