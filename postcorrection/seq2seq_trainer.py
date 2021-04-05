@@ -1,4 +1,6 @@
-"""[summary]
+"""Module with functions for training the post-correction sequence-to-sequence model.
+
+Early stopping on the validation set CER is used for determining the best model.
 
 Author: Shruti Rijhwani
 Contact: srijhwan@cs.cmu.edu

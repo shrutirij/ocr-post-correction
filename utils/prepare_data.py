@@ -1,4 +1,10 @@
-"""[summary]
+"""Script to prepare the pretraining and training datasets for training an OCR post-correction model.
+
+For pretraining data, the script combines all uncorrected files into a single text file.
+
+For training data, the script splits the manually corrected files into training, development, and testing sets.
+The fraction of training data is controlled with the --training_frac option.
+The remaining data is equally split between development and testing sets.
 
 Author: Shruti Rijhwani
 Contact: srijhwan@cs.cmu.edu
@@ -137,10 +143,12 @@ def prepare_training_data(src1, src2, tgt, output_folder, training_frac):
     random.shuffle(all_files)
 
     train_idx = round(training_frac * len(all_files))
-    dev_idx = train_idx + round((1.0 - training_frac) * len(all_files)/2)
+    dev_idx = train_idx + round((1.0 - training_frac) * len(all_files) / 2)
 
     if dev_idx <= train_idx or dev_idx == len(all_files):
-        logging.error("ERROR: Fractions for data split are not usable with the dataset size. Adjust the parameter and try again. ")
+        logging.error(
+            "ERROR: Fractions for data split are not usable with the dataset size. Adjust the parameter and try again. "
+        )
         return
 
     write_training_data(all_files[:train_idx], "{}/train_".format(output_folder), check)

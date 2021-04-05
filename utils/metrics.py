@@ -1,4 +1,7 @@
-"""[summary]
+"""Script to compute character error rate and word error rate between a predicted text and its "gold" target text.
+
+Usage:
+python metrics.py --pred [predicted_filename] --tgt [target_filename]
 
 Author: Shruti Rijhwani
 Contact: srijhwan@cs.cmu.edu
@@ -28,8 +31,8 @@ class ErrorMetrics:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--pred")
-    parser.add_argument("--tgt")
+    parser.add_argument("--pred", help="Predicted text.")
+    parser.add_argument("--tgt", help="Target text.")
     args = parser.parse_args()
 
     errors = defaultdict(lambda: 0)

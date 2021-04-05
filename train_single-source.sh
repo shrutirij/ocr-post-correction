@@ -51,6 +51,7 @@ python postcorrection/create_vocab.py \
 
 
 # Pretrain the model (add --dynet-gpu for using GPU)
+# See postcorrection/opts.py for all the options
 python postcorrection/multisource_wrapper.py \
 --dynet-mem $dynet_mem \
 --dynet-autobatch 1 \
@@ -65,6 +66,7 @@ $params \
 
 
 # Load the pretrained model and train the model using manually annotated training data (add --dynet-gpu for using GPU)
+# See postcorrection/opts.py for all the options
 python postcorrection/multisource_wrapper.py \
 --dynet-mem $dynet_mem \
 --dynet-autobatch 1 \

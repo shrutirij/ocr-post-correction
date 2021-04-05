@@ -1,4 +1,6 @@
-"""[summary]
+"""Wrapper class for the post-correction model functions.
+
+It includes steps to load the vocabulary, pretrain, train, and test with the model.
 
 Author: Shruti Rijhwani
 Contact: srijhwan@cs.cmu.edu

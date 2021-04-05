@@ -1,4 +1,7 @@
-"""[summary]
+"""Module to handle pretraining of the post-correction model.
+
+This includes pretraining the encoder and decoder with a language model objective.
+It also including pretraining the sequence-to-sequence model with "denoised" target data (see ../utils/denoise_outputs.py).
 
 Author: Shruti Rijhwani
 Contact: srijhwan@cs.cmu.edu

@@ -1,4 +1,7 @@
-"""[summary]
+"""Module with functions for using a trained post-correction model to produce predictions on unseen input data.
+
+The module can be used with a test set in order to get a text output and CER/WER metrics (lines 26). 
+It can also be used without a target prediction to only get the predicted output (line 40).
 
 Author: Shruti Rijhwani
 Contact: srijhwan@cs.cmu.edu

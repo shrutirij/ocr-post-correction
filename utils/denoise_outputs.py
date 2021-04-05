@@ -1,4 +1,12 @@
-"""[summary]
+"""Script to denoise first pass OCR outputs using a small amount of corrected data.
+
+The small amount of manually corrected data is used to create probabilistic "denoising rules".
+The rules are then applied to the input first pass files to automatically create "denoised outputs"
+
+The denoised outputs are subsequently used to pretrain the post-correction model.
+
+Usage:
+python denoise_outputs.py --train_src1 [train_src] --train_tgt [train_tgt] --input [input_filename] --output [output_filename]
 
 Author: Shruti Rijhwani
 Contact: srijhwan@cs.cmu.edu
@@ -94,10 +102,19 @@ class Denoiser(object):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--train_src1")
-    parser.add_argument("--train_tgt")
-    parser.add_argument("--input")
-    parser.add_argument("--output")
+    parser.add_argument(
+        "--train_src1",
+        help="Source 1 from the training set. These are used to build the denoising rules.",
+    )
+    parser.add_argument(
+        "--train_tgt",
+        help="Manually corrected transcriptions from the training set. These are used to build the denoising rules.",
+    )
+    parser.add_argument(
+        "--input",
+        help="Input file to denoise. Typically these are the uncorrected src1 for pretraining.",
+    )
+    parser.add_argument("--output", help="Output filename.")
     args = parser.parse_args()
 
     denoiser = Denoiser()

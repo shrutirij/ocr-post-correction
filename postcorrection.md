@@ -31,6 +31,8 @@ bash train_single-source.sh
 
 For multisource, use `train_multi-source.sh`.
 
+Log files and saved models are written to the user-specified experiment folder for both the pretraining and training steps.
+
 
 ## Testing
 
