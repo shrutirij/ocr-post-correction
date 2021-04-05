@@ -12,7 +12,7 @@ dev_tgt="sample_dataset/postcorrection/training/dev_tgt.txt"
 # Set experiment parameters
 expt_folder="my_expt_singlesource/"
 
-dynet_mem=1000 # Memory in MB available for training
+dynet_mem=3000 # Memory in MB available for training
 
 params="--pretrain_dec --pretrain_s2s --pretrain_enc --pointer_gen --coverage --diag_loss 2"
 pretrained_model_name="my_pretrained_model"
