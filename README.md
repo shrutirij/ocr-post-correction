@@ -10,7 +10,9 @@ Textual data in endangered languages is often found in **formats that are not ma
 
 
 ## OCR Post-Correction 
-The goal of OCR post-correction is to automatically correct errors in the text output from an existing OCR system. The existing OCR system is used to obtain a *first pass transcription* of the input image (example below in the endangered language Griko):
+The goal of OCR post-correction is to automatically correct errors in the text output from an existing OCR system.
+
+The existing OCR system is used to obtain a *first pass transcription* of the input image (example below in the endangered language Griko):
 
 <div align="center"><img alt="First pass OCR transcription" width="600px" src="docs/firstpass.png"></div>
 
@@ -21,7 +23,9 @@ The incorrectly recognized characters in the *first pass* are then corrected by 
 
 ## Model
 
-As seen in the example above, OCR post-correction is a text-based sequence-to-sequence task. We use a **character-level encoder-decoder architecture with attention** and add several adaptations for the low-resource setting. The paper has all the details!
+As seen in the example above, OCR post-correction is a text-based sequence-to-sequence task. 
+
+:pushpin: We use a **character-level encoder-decoder architecture with attention** and add several adaptations for the low-resource setting. The paper has all the details!
 
 :pushpin: The model is trained in a **supervised** manner. The training data consists of first pass OCR outputs as the *source* with corresponding manually corrected transcriptions as the *target*.
 
@@ -39,15 +43,15 @@ This repository contains a sample from our dataset in `sample_dataset`, which yo
 
 However, this repository can be used to train OCR post-correction models for **documents in any language**!
 
-:rocket: If you want to apply OCR post-correction to a new set of documents, follow [the steps here](firstpass.md) to construct the post-correction dataset.
+:rocket: If you want to apply OCR post-correction to a new set of documents, construct a dataset by following the steps [here](firstpass.md).
 
 :rocket: We'd love to hear about the new datasets and models you build: send us an email at [srijhwan@cs.cmu.edu](mailto:srijhwan@cs.cmu.edu)!
 
 
 ## Running Experiments
-Once you have a suitable dataset (e.g., from `sample_dataset/postcorrection` or your own dataset), you can train a model and run experiments on OCR post-correction.
+Once you have a suitable dataset (e.g., `sample_dataset` or your own dataset), you can train a model and run experiments on OCR post-correction.
 
-The steps are described below, illustrated using `sample_dataset/postcorrection`. If using another dataset, simply change the experiment settings to point to your dataset and run the same scripts.
+The steps are described below, illustrated with `sample_dataset/postcorrection`. If using another dataset, simply change the experiment settings to point to your dataset and run the same scripts.
 
 ### Requirements
 Python 3+ is required. Pip can be used to install the packages:
