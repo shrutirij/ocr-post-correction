@@ -78,7 +78,7 @@ python firstpass_ocr/transcribe_image.py  \
 
 The first 1000 images processed *per month* with Google Cloud are free. The platform also offers a $300 credit to new users.
 
-**If you are unable to sign up for Google Cloud, please email us at srijhwan@cs.cmu.edu and we might be able to help!**
+:rocket: If you are unable to sign up for Google Cloud, please email us at srijhwan@cs.cmu.edu and we might be able to help!
 
 ## Constructing a Post-Correction Dataset
 
