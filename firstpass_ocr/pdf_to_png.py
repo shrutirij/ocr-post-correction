@@ -1,4 +1,4 @@
-"""[summary]
+"""Script to convert a scanned document in PDF format into a set of PNG images, one per page.
 
 Author: Shruti Rijhwani
 Contact: srijhwan@cs.cmu.edu
@@ -15,9 +15,12 @@ import os
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--pdf")
-    parser.add_argument("--pdf_folder")
-    parser.add_argument("--output_folder")
+    parser.add_argument("--pdf", help="Path of a single PDF file to convert.")
+    parser.add_argument(
+        "--pdf_folder",
+        help="Path for folder that contains multiple PDF files to convert.",
+    )
+    parser.add_argument("--output_folder", help="Output folder for PNG files.")
     args = parser.parse_args()
     if args.pdf_folder:
         pdfs = glob.glob(args.pdf_folder + "/*.pdf")

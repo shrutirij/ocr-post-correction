@@ -1,4 +1,4 @@
-"""[summary]
+"""Script to get a first pass OCR output from the Google Vision OCR system on a set of scanned images.
 
 Author: Shruti Rijhwani
 Contact: srijhwan@cs.cmu.edu
@@ -95,10 +95,17 @@ def write_outputs(image_paths, ocr_responses, output_folder, json_out):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--image")
-    parser.add_argument("--image_folder")
-    parser.add_argument("--output_folder")
-    parser.add_argument("--json", action="store_true")
+    parser.add_argument("--image", help="Path of a single input image for processing.")
+    parser.add_argument(
+        "--image_folder",
+        help="Path of a folder that contains many images for processing.",
+    )
+    parser.add_argument("--output_folder", help="Output folder for the OCR text.")
+    parser.add_argument(
+        "--json",
+        action="store_true",
+        help="Enable for JSON output format which includes OCR text and bounding boxes. Default is plain text format.",
+    )
     args = parser.parse_args()
 
     if args.image_folder:
