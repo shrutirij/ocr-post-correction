@@ -8,9 +8,8 @@ Textual data in endangered languages is often found in **formats that are not ma
 
 :pushpin: Our model reduces the recognition error rate by 34% on average, over a state-of-the-art OCR system.
 
-This repository contains a sample from our dataset. Get the full dataset [here](https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__tAC8ehURVRVMVdQQjQzWlBSMkNaOEJKTUpWVFlEQy4u)!
 
-## OCR post-correction 
+## OCR Post-Correction 
 The goal of OCR post-correction is to automatically correct errors in the text output from an existing OCR system. The existing OCR system is used to obtain a *first pass transcription* of the input image (example below in the endangered language Griko):
 
 <div align="center"><img alt="First pass OCR transcription" width="600px" src="docs/firstpass.png"></div>
@@ -28,23 +27,66 @@ As seen in the example above, OCR post-correction is a text-based sequence-to-se
 
 :pushpin: Some books that contain texts in endangered languages also contain translations of the text in another (usually high-resource) language. We incorporate an additional encoder in the model, with a **multisource** framework, to use the information from these translations if they are available.
 
-
-## Running Experiments
-We provide a sample dataset in this repository and the full dataset from our paper is available [here](https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__tAC8ehURVRVMVdQQjQzWlBSMkNaOEJKTUpWVFlEQy4u). 
-
-However, this repository can be used to train OCR post-correction models for **documents in any language**!
-
-We provide scripts for both single-source and multisource models:
+We provide instructions for both single-source and multisource models:
 
 - The **single-source** model can be used for almost any document and is significantly easier to set up.
 
 - The **multisource** model can only be used if translations are available.
 
-:rocket: If you are using the sample dataset or already have OCR post-correction training data, follow [these steps](postcorrection.md) to run training and evaluation on the model.
+## Dataset
 
-:rocket: If you are starting with scanned images or a scanned PDF, follow [the steps here](firstpass.md) to get a *first pass OCR* and create the post-correction dataset.
+This repository contains a sample from our dataset in `sample_dataset`, which you can use to train the post-correction model. Get the full dataset [here](https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAN__tAC8ehURVRVMVdQQjQzWlBSMkNaOEJKTUpWVFlEQy4u)!
 
-We'd love to hear about the new datasets and models you build: send us an email at [srijhwan@cs.cmu.edu](mailto:srijhwan@cs.cmu.edu)!
+However, this repository can be used to train OCR post-correction models for **documents in any language**!
+
+:rocket: If you want to apply OCR post-correction to a new set of documents, follow [the steps here](firstpass.md) to construct the post-correction dataset.
+
+:rocket: We'd love to hear about the new datasets and models you build: send us an email at [srijhwan@cs.cmu.edu](mailto:srijhwan@cs.cmu.edu)!
+
+
+## Running Experiments
+Once you have a suitable dataset (e.g., from `sample_dataset/postcorrection` or your own dataset), you can train a model and run experiments on OCR post-correction.
+
+The steps are described below, illustrated using `sample_dataset/postcorrection`. If using another dataset, simply change the experiment settings to point to your dataset and run the same scripts.
+
+### Requirements
+Python 3+ is required. Pip can be used to install the packages:
+
+```
+pip install -r postcorr_requirements.txt
+```
+
+### Training
+
+The process of training the post-correction model has two main steps:
+
+* Pretraining with first pass OCR outputs.
+* Training with manually corrected transcriptions in a supervised manner.
+
+For a single-source model, modify the experimental settings in `train_single-source.sh` to point to the appropriate dataset and desired output folder. It is currently set up to use `sample_dataset`.
+
+Then run
+```
+bash train_single-source.sh
+```
+
+For multisource, use `train_multi-source.sh`.
+
+Log files and saved models are written to the user-specified experiment folder for both the pretraining and training steps. For a list of all available hyperparameters and options, look at `postcorrection/constants.py` and `postcorrection/opts.py`.
+
+
+### Testing
+
+For testing with a single-source model, modify the experimental settings in `test_single-source.sh`. It is currently set up to use `sample_dataset`.
+
+Then run
+```
+bash test_single-source.sh
+```
+
+For multisource, use `test_multi-source.sh`.
+
+
 
 ## Citation
 Please cite our paper if this repository was useful.
