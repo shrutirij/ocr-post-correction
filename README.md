@@ -8,6 +8,8 @@ Textual data in endangered languages is often found in **formats that are not ma
 
 :pushpin: Our model reduces the recognition error rate by 34% on average, over a state-of-the-art OCR system.
 
+Learn more about the paper [here](https://shrutirij.github.io/ocr-el/)!
+
 
 ## OCR Post-Correction 
 The goal of OCR post-correction is to automatically correct errors in the text output from an existing OCR system.
