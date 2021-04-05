@@ -43,7 +43,7 @@ This repository contains a sample from our dataset in `sample_dataset`, which yo
 
 However, this repository can be used to train OCR post-correction models for **documents in any language**!
 
-:rocket: If you want to apply OCR post-correction to a new set of documents, construct a dataset by following the steps [here](firstpass.md).
+:rocket: If you want to use our model with a new set of documents, construct a dataset by following the steps [here](firstpass.md).
 
 :rocket: We'd love to hear about the new datasets and models you build: send us an email at [srijhwan@cs.cmu.edu](mailto:srijhwan@cs.cmu.edu)!
 
