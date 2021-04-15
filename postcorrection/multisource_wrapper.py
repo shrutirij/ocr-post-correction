@@ -46,9 +46,9 @@ if __name__ == "__main__":
     )
 
     model = TwoSourceModel(
-        src1_vocab,
-        src2_vocab,
-        tgt_vocab,
+        src1_vocab=src1_vocab,
+        src2_vocab=src2_vocab,
+        tgt_vocab=tgt_vocab,
         single=config.args.single,
         pointer_gen=config.args.pointer_gen,
         coverage=config.args.coverage,

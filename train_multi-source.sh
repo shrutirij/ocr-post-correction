@@ -76,7 +76,7 @@ python postcorrection/multisource_wrapper.py \
 --train_src1 $train_src1 \
 --train_src2 $train_src2 \
 --train_tgt $train_tgt \
---dev_src1 $dev_src2 \
+--dev_src1 $dev_src1 \
 --dev_src2 $dev_src2 \
 --dev_tgt $dev_tgt \
 $params \
