@@ -122,4 +122,4 @@ python utils/prepare_data.py  \
 --output_folder sample_dataset/postcorrection
 ```
 
-:rocket: The dataset can now be used to train a model: [instructions here](postcorrection.md). The trained model can then be applied to all the unannotated pages and future documents for automatic post-correction!
+:rocket: The dataset can now be used to train a model: [instructions here](README.md). The trained model can then be applied to all the unannotated pages and future documents for automatic post-correction!
