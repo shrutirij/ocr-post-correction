@@ -51,7 +51,7 @@ However, this repository can be used to train OCR post-correction models for **d
 
 
 ## Running Experiments
-Once you have a suitable dataset (e.g., `sample_dataset` or your own dataset), you can train a model and run experiments on OCR post-correction.
+Once you have a suitable dataset (e.g., `sample_dataset` or your own dataset), you can train a model and run experiments on OCR post-correction. If you haven't already, use `utils/prepare_data.py` to create train, development, and test splits (see the last step [here](firstpass.md)). 
 
 The steps are described below, illustrated with `sample_dataset/postcorrection`. If using another dataset, simply change the experiment settings to point to your dataset and run the same scripts.
 
