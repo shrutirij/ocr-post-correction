@@ -1,6 +1,6 @@
 **Coming soon:** an update to the software including features from our paper on semi-supervised OCR post-correction, to be published in the Transactions of the Association for Computational Linguistics (TACL)! 
 
-Check out the paper [here](https://arxiv.org/abs/2111.02622v1).
+Check out the paper, "Lexically Aware Semi-Supervised Learning for OCR Post-Correction", [here](https://arxiv.org/abs/2111.02622v1).
 
 
 # OCR Post Correction for Endangered Language Texts
