@@ -1,3 +1,6 @@
+Coming soon: an update to the software including features from our paper on semi-supervised OCR post-correction! Check out the paper [here](https://arxiv.org/abs/2111.02622v1).
+
+
 # OCR Post Correction for Endangered Language Texts
 
 This repository contains code for models and experiments from the paper "[OCR Post Correction for Endangered Language Texts](https://www.aclweb.org/anthology/2020.emnlp-main.478/)".
