@@ -3,8 +3,8 @@
 Check out the paper [here](https://arxiv.org/abs/2111.02622v1).
 
 New features coming soon:
-* Self-training for OCR post-correction
-* Joint inference with a neural post-correction model and a count-based language model using weighted finite state automata (WFSA).
+* A module for self-training the OCR post-correction model
+* A module for joint decoding with the neural model and a count-based language model using weighted finite state automata (WFSA)
 
 
 # OCR Post Correction for Endangered Language Texts
