@@ -1,3 +1,4 @@
+<!---
 :pushpin: **Coming soon:** an update to the software including features from our paper on semi-supervised OCR post-correction, to be published in the Transactions of the Association for Computational Linguistics (TACL)! 
 
 Check out the paper [here](https://arxiv.org/abs/2111.02622v1).
@@ -5,7 +6,7 @@ Check out the paper [here](https://arxiv.org/abs/2111.02622v1).
 New features coming soon:
 * A module for self-training the OCR post-correction model
 * A module for joint decoding with the neural model and a count-based language model using weighted finite state automata (WFSA)
-
+-->
 
 # OCR Post Correction for Endangered Language Texts
 
