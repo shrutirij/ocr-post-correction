@@ -41,8 +41,8 @@ def prepare_pretraining_data(src1, src2, output_folder):
     for src1_file, src2_file in zip(src1_paths, src2_paths):
         assert src1_file.split("/")[-1] == src2_file.split("/")[-1]
 
-        src1_lines = open(src1_file, encoding="utf8").readlines()
-        src2_lines = open(src2_file, encoding="utf8").readlines()
+        src1_lines = open(src1_file, encoding="utf8").read().splitlines()
+        src2_lines = open(src2_file, encoding="utf8").read().splitlines()
 
         if len(src1_lines) != len(src2_lines):
             logging.warning(
@@ -62,11 +62,11 @@ def prepare_pretraining_data(src1, src2, output_folder):
             src2_all_lines.append(src2_line)
 
     open("{}/pretrain_src1.txt".format(output_folder), "w", encoding="utf8").write(
-        "".join(src1_all_lines)
+        "\n".join(src1_all_lines) + "\n"
     )
     if src2:
         open("{}/pretrain_src2.txt".format(output_folder), "w", encoding="utf8").write(
-            "".join(src2_all_lines)
+            "\n".join(src2_all_lines) + "\n"
         )
 
 
@@ -82,9 +82,9 @@ def write_training_data(filenames, output_name, check):
             == tgt_file.split("/")[-1]
         )
 
-        src1_lines = open(src1_file, encoding="utf8").readlines()
-        src2_lines = open(src2_file, encoding="utf8").readlines()
-        tgt_lines = open(tgt_file, encoding="utf8").readlines()
+        src1_lines = open(src1_file, encoding="utf8").read().splitlines()
+        src2_lines = open(src2_file, encoding="utf8").read().splitlines()
+        tgt_lines = open(tgt_file, encoding="utf8").read().splitlines()
 
         if len(src1_lines) != len(src2_lines) or len(src1_lines) != len(tgt_lines):
             logging.warning(
@@ -111,14 +111,14 @@ def write_training_data(filenames, output_name, check):
             tgt_all_lines.append(tgt_line)
 
     open("{}src1.txt".format(output_name), "w", encoding="utf8").write(
-        "".join(src1_all_lines)
+        "\n".join(src1_all_lines) + "\n"
     )
     if check:
         open("{}src2.txt".format(output_name), "w", encoding="utf8").write(
-            "".join(src2_all_lines)
+            "\n".join(src2_all_lines) + "\n"
         )
     open("{}tgt.txt".format(output_name), "w", encoding="utf8").write(
-        "".join(tgt_all_lines)
+        "\n".join(tgt_all_lines) + "\n"
     )
 
 
